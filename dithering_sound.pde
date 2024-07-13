@@ -1,7 +1,7 @@
 import processing.sound.*;
 
 AudioSample sample;
-Waveform waveform;
+//Waveform waveform;
 
 int sampleRate;
 float duration;
@@ -24,6 +24,7 @@ void setup() {
     var currFrequency = data[i];
     var closest = FindClosest(allowedFreq, currFrequency);
     data[i] = closest;
+
     var err = currFrequency - closest;
     if (i < data.length - 1)
       data[i+1] += err * 0.25;
@@ -33,9 +34,9 @@ void setup() {
 
   sample.write(data);
   /*sample.loop();
-   waveform = new Waveform(this, 10000);
-   waveform.input(sample);
-   println("done");*/
+  waveform = new Waveform(this, 10000);
+  waveform.input(sample);*/
+  println("done");
 }
 
 float FindClosest(float[] arr, float f) {
@@ -45,27 +46,27 @@ float FindClosest(float[] arr, float f) {
     if (d > record) {
       return arr[i-1];
     } else
-      d = record;
+      record = d;
   }
   return arr[arr.length - 1];
 }
 
 void draw() {
   /*background(0);
-   stroke(255);
-   strokeWeight(0.2);
-   noFill();
-   
-   
-   waveform.analyze();
-   
-   beginShape();
-   for (int i = 0; i < 10000; i++)
-   {
-   vertex(
-   map(i, 0, 10000-1, 0, width),
-   map(waveform.data[i], -1, 1, 0, height)
-   );
-   }
-   endShape();*/
+  stroke(255);
+  strokeWeight(0.2);
+  noFill();
+
+
+  waveform.analyze();
+
+  beginShape();
+  for (int i = 0; i < 10000; i++)
+  {
+    vertex(
+      map(i, 0, 10000-1, 0, width),
+      map(waveform.data[i], -1, 1, 0, height)
+      );
+  }
+  endShape();*/
 }
